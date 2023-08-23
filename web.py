@@ -7,14 +7,14 @@ def add_todo():
     todos.append(todo+"\n")
     functions.write_todos(todos)
 
-
-
-
+st.set_page_config(layout="wide")
 
 st.title("My Todo App")
 st.subheader("this is my todo app")
-st.write("This app is to increase your productivity")
+st.write("This app is to increase your <b>productivity</b>" , unsafe_allow_html=True)
 
+st.text_input(label='', placeholder='Life of Brian',
+              on_change=add_todo, key='new_todo')
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo,key=todo)
@@ -26,5 +26,4 @@ for index, todo in enumerate(todos):
         del st.session_state[todo]
         st.experimental_rerun()
 
-st.text_input(label='', placeholder='Life of Brian',
-              on_change=add_todo, key='new_todo')
+
